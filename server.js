@@ -26,12 +26,6 @@ mongoose.connect(process.env.DATABASE_CONNECTION, {
     process.exit();
 });
 
-
-// define a simple route
-app.get('/', (req, res) => {
-    res.json({"message": "Welcome to EasyNotes application. Take notes quickly. Organize and keep track of all your notes."});
-});
-
 // listen for requests
 require('./routes/routes.js')(app);
 app.listen(3000, () => {
