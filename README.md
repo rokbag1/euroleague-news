@@ -1,1 +1,1 @@
-# euroleague-news
+# euroleague-news(Server-side)
