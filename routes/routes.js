@@ -1,18 +1,18 @@
 module.exports = (app) => {
-    const players = require('../controllers/controllers');
+    const articles = require('../controllers/controllers');
 
     // Create a new Note
-    app.post('/players', players.create);
+    app.post('/articles', articles.create);
 
     // Retrieve all Notes
-    app.get('/players', players.findAll);
+    app.get('/articles', articles.findAll);
 
     // Retrieve a single Note with noteId
-    app.get('/players/:playerId', players.findOne);
+    app.get('/articles/:articleId', articles.findOne);
 
     // Update a Note with noteId
-    app.put('/players/:playerId', players.update);
+    app.put('/articles/:articleId', articles.update);
 
     // Delete a Note with noteId
-    app.delete('/players/:playerId', players.delete);
+    app.delete('/articles/:articleId', articles.delete);
 }

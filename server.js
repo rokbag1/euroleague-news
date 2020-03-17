@@ -11,17 +11,16 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 //connect to database
-
 mongoose.Promise = global.Promise;
 mongoose.connect(process.env.DATABASE_CONNECTION, {
     useUnifiedTopology: true, 
     useNewUrlParser: true 
 
 }).then(() => {
-    console.log("Successfully connected to the database");  
+    console.log('Successfully connected to the database');  
 
 }).catch(err => {
-    console.log("Can't connect to database :(");
+    console.log('Database can not be reached!');
     process.exit();
 });
 

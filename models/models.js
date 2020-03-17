@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const playersSchema = mongoose.Schema({
+const article = mongoose.Schema({
     articleTitle: String,
     articleContent: String,
     articleImage: String,
@@ -8,4 +8,4 @@ const playersSchema = mongoose.Schema({
     timestamps: true
 });
 
-module.exports = mongoose.model('Players', playersSchema);
+module.exports = mongoose.model('Players', article);

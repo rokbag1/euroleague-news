@@ -1,34 +1,46 @@
-const Player = require('../models/models.js');
+const Article = require('../models/models.js');
 
 // Create and Save a new Note
 exports.create = (req, res) => {
   if (!req.body.articleContent && !req.body.articleTitle) {
     return res.status(400).send({
-      message: 'Article must have title/content'
+      message: "Article must have title/content"
     });
   }
 
+  var blobFunction = require('../blobService');
+
   // Create a Note
-  const player = new Player({
-    articleTitle: req.body.articleTitle, 
+  const article = new Article({
+    articleTitle: req.body.articleTitle,
     articleContent: req.body.articleContent,
-    articleImage: req.body.articleImage || 'no-image'  
+    articleImage: blobFunction.blobName
   });
 
-  player
+  article
     .save()
     .then(data => {
       res.send(data);
     })
     .catch(err => {
       res.status(500).send({
-        message: err.message || 'Some error occurred while creating article.'
+        message: err.message || "Some error occurred while creating article."
       });
     });
 };
 
 // Retrieve and return all notes from the database.
-exports.findAll = (req, res) => {};
+exports.findAll = (req, res) => {
+    Article.find()
+    .then(article => {
+      res.send(article);
+    })
+    .catch(err => {
+      res.status(500).send({
+        message: err.message || 'Some error occurred while retrieving articles.'
+      });
+    });
+};
 
 // Find a single note with a noteId
 exports.findOne = (req, res) => {};
