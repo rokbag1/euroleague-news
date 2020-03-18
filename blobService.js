@@ -1,7 +1,10 @@
 const { BlobServiceClient } = require('@azure/storage-blob');
 const uuidv1 = require('uuid/v1');
 const fs = require('fs');
-const blobName = 'quickstart' + uuidv1() + '.jpg';
+const blobName = 'euro_league_image_' + uuidv1() + '.jpg';
+
+require('dotenv/config');
+
 module.exports = { blobFunction: blobName };
 
 async function main() {
@@ -9,7 +12,7 @@ async function main() {
 console.log('Azure Blob storage v12 - JavaScript quickstart sample');
 
 // Login to Azure
-const blobServiceClient = await BlobServiceClient.fromConnectionString("DefaultEndpointsProtocol=https;AccountName=euroleaguenews;AccountKey=jJjG0sfWC9I3TMLi4HvCtN2snTq/wMfloAEcbbjBD660/6vg8towP0P1s9W2/tr+pTNnhnnecjLw2pG9WP5kPQ==;EndpointSuffix=core.windows.net");
+const blobServiceClient = await BlobServiceClient.fromConnectionString(process.env.AZURE_STORAGE_CONNECTION_STRING);
 
 //Container name
 const containerName = 'euroleaguenewsimages';

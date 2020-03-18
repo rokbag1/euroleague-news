@@ -1,4 +1,5 @@
 const Article = require('../models/models.js');
+var azure_url = 'https://euroleaguenews.blob.core.windows.net/euroleaguenewsimages/';
 
 // Create and Save a new Note
 exports.create = (req, res) => {
@@ -14,7 +15,7 @@ exports.create = (req, res) => {
   const article = new Article({
     articleTitle: req.body.articleTitle,
     articleContent: req.body.articleContent,
-    articleImage: blobFunction.blobName
+    articleImage: azure_url + blobFunction.blobFunction
   });
 
   article
